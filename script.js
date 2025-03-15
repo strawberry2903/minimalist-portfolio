@@ -1,12 +1,18 @@
-const projects = [
-    { name: "Minimalist Portfolio", link: "https://strawberry2903.github.io/minimalist-portfolio/" },
-    { name: "🚧 Coming Soon!", link: "#" }
-];
+document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll("nav ul li a");
+    
+    links.forEach(link => {
+        link.addEventListener("click", smoothScroll);
+    });
 
-const projectsContainer = document.getElementById("projects-container");
+    function smoothScroll(event) {
+        event.preventDefault();
+        const targetId = this.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
 
-projects.forEach(project => {
-    const projectElement = document.createElement("p");
-    projectElement.innerHTML = `<a href="${project.link}" target="_blank">${project.name}</a>`;
-    projectsContainer.appendChild(projectElement);
+        window.scrollTo({
+            top: targetSection.offsetTop - 50,
+            behavior: "smooth"
+        });
+    }
 });
