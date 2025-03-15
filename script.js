@@ -1,12 +1,12 @@
-// Wait for the DOM to load
-document.addEventListener("DOMContentLoaded", () => {
-    const header = document.querySelector("header");
+const projects = [
+    { name: "Minimalist Portfolio", link: "https://strawberry2903.github.io/minimalist-portfolio/" },
+    { name: "🚧 Coming Soon!", link: "#" }
+];
 
-    // Change background color on click
-    header.addEventListener("click", () => {
-        header.style.backgroundColor = header.style.backgroundColor === "black" ? "white" : "black";
-        header.style.color = header.style.color === "white" ? "black" : "white";
-    });
+const projectsContainer = document.getElementById("projects-container");
 
-    console.log("Portfolio loaded successfully!");
+projects.forEach(project => {
+    const projectElement = document.createElement("p");
+    projectElement.innerHTML = `<a href="${project.link}" target="_blank">${project.name}</a>`;
+    projectsContainer.appendChild(projectElement);
 });
